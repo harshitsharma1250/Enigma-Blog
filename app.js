@@ -2,13 +2,13 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const Blog = require('./models/blog');
+const dotenv = require('dotenv').config() ;
 
 // express app
 const app = express();
 
 // connect to mongodb & listen for requests
-const dbURI = "mongodb+srv://netninja:test1234@nodetuts.zhbyivj.mongodb.net/node-tuts?retryWrites=true&w=majority";
-
+const dbURI = process.env.connect_id ;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(result => app.listen(3000))
   .catch(err => console.log(err));
